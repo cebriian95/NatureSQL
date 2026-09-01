@@ -57,9 +57,9 @@ Pregunta en lenguaje natural
 
 ```
 ┌──────────────┐                ┌────────────────────────────────────┐
-│   Angular     │    HTTPS      │         ASP.NET Core Web API       │
-│  (frontend)   │ ◄────────────►│                                    │
-│  Chat UI      │               │  Api → Application → Domain        │
+│   Angular    │     HTTPS      │         ASP.NET Core Web API       │
+│  (frontend)  │  ◄────────────►│                                    │
+│  Chat UI     │                │  Api → Application → Domain        │
 └──────────────┘                │              ↑ (implementa)        │
                                 │        Infrastructure              │
                                 │         ├─ LLM Providers ──────────┼──► API del LLM (Gemini, OpenAI...)
