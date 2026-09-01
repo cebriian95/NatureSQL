@@ -1,0 +1,92 @@
+# ============================================================
+# .gitignore — natureSQL
+# Qué NO debe entrar nunca en el repositorio git.
+# Basado en las plantillas oficiales de github/gitignore
+# (VisualStudio.gitignore + Node.gitignore) y adaptado al proyecto.
+#
+# Cómo funciona la sintaxis:
+#   bin/        → ignora cualquier carpeta llamada "bin" a cualquier nivel
+#   *.user      → ignora cualquier archivo terminado en .user
+#   [Bb]in/     → ignora "Bin" y "bin" (rangos de caracteres)
+#   !archivo    → EXCEPCIÓN: vuelve a incluir algo ignorado antes
+#   # comentario
+# ============================================================
+
+# ---------- Desarrollo ----------
+# guía de desarrollo, no es código fuente
+AGENTS.md        
+
+# ---------- .NET / Backend ----------
+# Resultado de compilar: se regenera con `dotnet build`, no es código fuente
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+
+# Resultados y cobertura de tests
+[Tt]est[Rr]esult*/
+*.coverage
+coverage*.xml
+
+# Archivos personales de Visual Studio / Rider / VS
+# (guardan preferencias TUYAS del IDE: ventanas abiertas, breakpoints...)
+*.user
+*.suo
+.vs/
+.idea/
+
+# Paquetes NuGet descargados (se restauran con `dotnet restore`)
+*.nupkg
+packages/
+
+# NOTA: las migraciones de EF Core (carpeta Migrations/) SÍ se commitean:
+# son código que describe la evolución del esquema de la BD.
+
+# ---------- Node / Angular (frontend) ----------
+# Dependencias npm: se regeneran con `npm install` (¡pesan cientos de MB!)
+node_modules/
+
+# Build de producción de Angular: se regenera con `ng build`
+dist/
+
+# Caché de Angular CLI
+.angular/
+
+# Logs y caché de npm
+npm-debug.log*
+.npm/
+
+# Cobertura de tests frontend
+coverage/
+
+# NOTA: package-lock.json SÍ se commitean: garantiza que todos instalen
+# exactamente las mismas versiones de cada dependencia.
+
+# ---------- Secretos (LÍNEA ROJA del proyecto, ver AGENTS.md §7) ----------
+# Variables de entorno locales: aquí vivirían API keys, contraseñas...
+.env
+.env.*
+# ...excepto la plantilla de ejemplo SIN valores reales, que sí se comparte
+!.env.example
+
+# Archivos de configuración locales con secretos
+*.local.json
+
+# NOTA: las claves reales en desarrollo vivirán en `dotnet user-secrets`,
+# que se guarda FUERA del repo (~/.microsoft/usersecrets/), no aquí.
+
+# ---------- Base de datos propia (SQLite, ver ADR-0007) ----------
+# La BD contiene historial y CLAVES CIFRADAS: jamás debe subirse al repo
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# ---------- Datos locales de Docker ----------
+# Los scripts de docker/demo-db/ SÍ se commitean (son código);
+# esto es por si montamos volúmenes de datos en local
+docker/data/
+
+# ---------- Sistema operativo ----------
+.DS_Store        # macOS
+Thumbs.db        # Windows
