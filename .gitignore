@@ -14,7 +14,8 @@
 
 # ---------- Desarrollo ----------
 # guía de desarrollo, no es código fuente
-AGENTS.md        
+AGENTS.md  
+CLAUDE.md
 
 # ---------- .NET / Backend ----------
 # Resultado de compilar: se regenera con `dotnet build`, no es código fuente
