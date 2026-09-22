@@ -1,0 +1,26 @@
+{
+  "app": {
+    "name": "NatureSQL",
+    "tagline": "Ask your database in plain language"
+  },
+  "status": {
+    "title": "API status",
+    "loading": "Checking…",
+    "online": "Connected",
+    "offline": "No response",
+    "mode": "Mode"
+  },
+  "settings": {
+    "language": "Language",
+    "theme": "Theme"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "language": {
+    "es": "Español",
+    "en": "English"
+  }
+}

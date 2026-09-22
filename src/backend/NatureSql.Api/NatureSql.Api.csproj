@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <!-- El frontend compilado se copia aquí en la imagen Docker; no debe versionarse. -->
+    <SpaRoot>wwwroot</SpaRoot>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NatureSql.Core\NatureSql.Core.csproj" />
+    <ProjectReference Include="..\NatureSql.Infrastructure\NatureSql.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

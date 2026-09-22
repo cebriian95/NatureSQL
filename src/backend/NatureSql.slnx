@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/tests/">
+    <Project Path="tests/NatureSql.IntegrationTests/NatureSql.IntegrationTests.csproj" />
+    <Project Path="tests/NatureSql.UnitTests/NatureSql.UnitTests.csproj" />
+  </Folder>
+  <Project Path="NatureSql.Api/NatureSql.Api.csproj" />
+  <Project Path="NatureSql.Core/NatureSql.Core.csproj" />
+  <Project Path="NatureSql.Infrastructure/NatureSql.Infrastructure.csproj" />
+</Solution>

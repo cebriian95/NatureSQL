@@ -62,7 +62,7 @@ coverage/
 # NOTA: package-lock.json SÍ se commitean: garantiza que todos instalen
 # exactamente las mismas versiones de cada dependencia.
 
-# ---------- Secretos (LÍNEA ROJA del proyecto, ver AGENTS.md §7) ----------
+# ---------- Secretos (LÍNEA ROJA del proyecto, ver CLAUDE.md regla 3) ----------
 # Variables de entorno locales: aquí vivirían API keys, contraseñas...
 .env
 .env.*
@@ -75,7 +75,7 @@ coverage/
 # NOTA: las claves reales en desarrollo vivirán en `dotnet user-secrets`,
 # que se guarda FUERA del repo (~/.microsoft/usersecrets/), no aquí.
 
-# ---------- Base de datos propia (SQLite, ver ADR-0007) ----------
+# ---------- Base de datos propia (SQLite, ver PROYECTO.md §7) ----------
 # La BD contiene historial y CLAVES CIFRADAS: jamás debe subirse al repo
 *.db
 *.db-shm
@@ -88,6 +88,14 @@ coverage/
 # esto es por si montamos volúmenes de datos en local
 docker/data/
 
+# ---------- Frontend compilado dentro del backend ----------
+# El Dockerfile copia aquí el resultado de `ng build`; es artefacto, no código fuente.
+src/backend/NatureSql.Api/wwwroot/
+
 # ---------- Sistema operativo ----------
-.DS_Store        # macOS
-Thumbs.db        # Windows
+# OJO: en .gitignore no existen los comentarios al final de una línea;
+# todo lo que va tras el patrón forma parte del propio patrón.
+# macOS
+.DS_Store
+# Windows
+Thumbs.db

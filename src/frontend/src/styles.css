@@ -1,0 +1,9 @@
+@import 'tailwindcss';
+
+/*
+  Tailwind v4 usa por defecto el modo oscuro del sistema (prefers-color-scheme), que no
+  permite forzarlo desde la app. Este "custom variant" hace que las utilidades `dark:`
+  se apliquen cuando el elemento, o un ancestro, tiene la clase `.dark`, que ThemeService
+  pone y quita en <html>. Así el usuario puede elegir claro, oscuro o seguir al sistema.
+*/
+@custom-variant dark (&:where(.dark, .dark *));

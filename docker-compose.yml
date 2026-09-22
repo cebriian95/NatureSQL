@@ -1,0 +1,21 @@
+# Modo Local: la app en tu propio equipo.
+#   docker compose up --build   →   http://localhost:8080
+services:
+  naturesql:
+    build:
+      context: .
+    image: naturesql:local
+    container_name: naturesql
+    # 127.0.0.1 al principio es deliberado: el puerto solo se publica en esta máquina,
+    # nunca en la red local. Es la diferencia entre "8080:8080" y esto.
+    ports:
+      - '127.0.0.1:8080:8080'
+    environment:
+      NATURESQL__MODE: Local
+    volumes:
+      # Datos de la app: SQLite y claves de cifrado. Sobreviven a `docker compose down`.
+      - naturesql-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  naturesql-data:

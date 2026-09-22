@@ -1,0 +1,99 @@
+<main class="min-h-dvh bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+  <div class="mx-auto flex min-h-dvh max-w-xl flex-col justify-center gap-10 px-6 py-16">
+    <header class="flex items-center gap-3">
+      <svg lucideLeaf class="size-9 shrink-0 text-emerald-600 dark:text-emerald-400"></svg>
+      <div>
+        <h1 class="text-2xl font-semibold tracking-tight">{{ 'app.name' | transloco }}</h1>
+        <p class="text-sm text-slate-600 dark:text-slate-400">{{ 'app.tagline' | transloco }}</p>
+      </div>
+    </header>
+
+    <section
+      class="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900"
+    >
+      <h2 class="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-400">
+        <svg lucideDatabase class="size-4"></svg>
+        {{ 'status.title' | transloco }}
+      </h2>
+
+      <p class="mt-2 text-lg">
+        @if (health.isLoading()) {
+          {{ 'status.loading' | transloco }}
+        } @else if (health.hasValue()) {
+          <span class="font-medium text-emerald-600 dark:text-emerald-400">
+            {{ 'status.online' | transloco }}
+          </span>
+          <span class="text-slate-500 dark:text-slate-400">
+            · {{ 'status.mode' | transloco }}: {{ health.value().mode }}
+          </span>
+        } @else {
+          <span class="font-medium text-red-600 dark:text-red-400">
+            {{ 'status.offline' | transloco }}
+          </span>
+        }
+      </p>
+    </section>
+
+    <div class="flex flex-col gap-6 sm:flex-row sm:gap-10">
+      <section>
+        <h2 class="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-400">
+          <svg lucideLanguages class="size-4"></svg>
+          {{ 'settings.language' | transloco }}
+        </h2>
+        <div class="mt-2 flex gap-2">
+          @for (language of languages; track language) {
+            <button
+              type="button"
+              (click)="useLanguage(language)"
+              [attr.aria-pressed]="language === currentLanguage()"
+              class="rounded-lg border px-3 py-1.5 text-sm transition-colors"
+              [class]="
+                language === currentLanguage()
+                  ? 'border-emerald-600 bg-emerald-600 text-white dark:border-emerald-500 dark:bg-emerald-500 dark:text-slate-950'
+                  : 'border-slate-300 hover:bg-slate-100 dark:border-slate-700 dark:hover:bg-slate-800'
+              "
+            >
+              {{ 'language.' + language | transloco }}
+            </button>
+          }
+        </div>
+      </section>
+
+      <section>
+        <h2 class="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-400">
+          <svg lucideSun class="size-4"></svg>
+          {{ 'settings.theme' | transloco }}
+        </h2>
+        <div class="mt-2 flex gap-2">
+          @for (theme of themes; track theme) {
+            <button
+              type="button"
+              (click)="useTheme(theme)"
+              [attr.aria-pressed]="theme === currentTheme()"
+              [attr.aria-label]="'theme.' + theme | transloco"
+              class="flex items-center gap-2 rounded-lg border px-3 py-1.5 text-sm transition-colors"
+              [class]="
+                theme === currentTheme()
+                  ? 'border-emerald-600 bg-emerald-600 text-white dark:border-emerald-500 dark:bg-emerald-500 dark:text-slate-950'
+                  : 'border-slate-300 hover:bg-slate-100 dark:border-slate-700 dark:hover:bg-slate-800'
+              "
+            >
+              @switch (theme) {
+                @case ('light') {
+                  <svg lucideSun class="size-4"></svg>
+                }
+                @case ('dark') {
+                  <svg lucideMoon class="size-4"></svg>
+                }
+                @case ('system') {
+                  <svg lucideMonitor class="size-4"></svg>
+                }
+              }
+              {{ 'theme.' + theme | transloco }}
+            </button>
+          }
+        </div>
+      </section>
+    </div>
+  </div>
+</main>

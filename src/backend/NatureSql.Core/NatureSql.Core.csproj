@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Dominio e interfaces. NO debe tener ninguna <ProjectReference> ni paquetes de
+    infraestructura (EF Core, Npgsql, SDKs de LLM). Un test de arquitectura lo comprueba.
+  -->
+
+</Project>
